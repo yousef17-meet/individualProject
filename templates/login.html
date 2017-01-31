@@ -1,0 +1,11 @@
+<h1>Log In Here</h1>
+
+<from action="{{url_for('login') }}" method  = 'post'>
+	Email Address:<br>
+	<input type="text" name="email"><br>
+	Password:<br>
+	<input type="password" name="password">
+		<input type="submit" name="Login">
+</from>
+
+<p>Dont have an account? Creat one <a href="{{url_for('signup')}}">here</a>
