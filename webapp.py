@@ -63,8 +63,8 @@ def login():
 			flash('Login Successful, welcome, %s' % customer.name)
 			login_session['name'] = user.name
 			login_session['email'] = user.email
-			login_session['id'] = customer.id
-			return redirect(url_for('playlist'))
+			login_session['id'] = user.id
+			return redirect(url_for('mainpage'))
 		else:
 			flash('Incorrect username/password combination')
 			return redirect(url_for('login'))
@@ -109,7 +109,13 @@ def addtoplaylist(song_id):
 
 @app.route('/playlist')
 def playlist():
-	return "To be implemented"
+	if 'id' not in login_session:
+		flash("You must be logged in")
+		return redirect(url_for('login'))
+	playlist = session.query(playlist).filter_by(user_id=login_session['id']).one()
+	return render_template('playlist.html', playlist=playlist)
+
+
 
 @app.route("/removefromplaylist/<int:song_id>", methods = ['POST'])
 def removefromplaylist(song_id):

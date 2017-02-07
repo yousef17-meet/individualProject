@@ -1,0 +1,17 @@
+<h1>Playlist for {{playlist.user.name}}</h1>
+
+{%if playlist.song == []%}
+<p> There are no songs in your playlist.</p>
+{% else %}
+<table>
+	<tr><th> Name</th><th>Band</th><th>Duration</th></tr>
+{% for item in playlist.song %}
+	<tr>
+		<td>{{item.song.name}}</td>
+		<td>{{item.song.band</td>
+		<td>{{item.song.duration</td>
+		{% endfor %}
+
+	</table>
+
+	{% endif %}

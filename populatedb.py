@@ -3,6 +3,7 @@ from model import *
 
 engine = create_engine('sqlite:///model.db')
 Base.metadata.bind = engine
+Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine, autoflush=False)
 session = DBSession()
 

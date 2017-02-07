@@ -5,17 +5,11 @@
 <a href = "{{url_for('signup')}}"> Sign Up </a>
 
 
-{%for band in allBands %}
-
-<h3> {{band.name}} </h3>
 
 
-{% endfor%}
+ <div class="bands" >
 
-{%for song in allsongs %}
-
-<h4>{{song.name}}</h4>
-<p>{{song.duration}}</p>
-<p></p>
- {% endfor %}
- 
+ 	{% for band in allbands %}
+ 	<p>{{band.name}}</p>
+ 	{% endfor %}
+ </div>
