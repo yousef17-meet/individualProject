@@ -1,5 +1,5 @@
 from model import *
-
+print('aaa')
 
 engine = create_engine('sqlite:///model.db')
 Base.metadata.bind = engine
@@ -43,7 +43,6 @@ aus = Band(name='Autostrad')
 
 session.add(aus)
 
-session.add(aus)
 
 session.commit()
 

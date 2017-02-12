@@ -13,8 +13,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def mainpage():
-	allBands = session.query(Band).all()
-	return render_template("mainpage.html", allBands = allBands)
+	Bands = session.query(Band).all()
+	return render_template("mainpage.html", Bands= Bands)
 
 
 @app.route('/newuser', methods = ['GET','POST'])
