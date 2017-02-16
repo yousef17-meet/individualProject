@@ -62,7 +62,7 @@ class SongPlaylistAssociation(Base):
 
 
 
-engine = create_engine('sqlite:///playlists.db')
+engine = create_engine('sqlite:///model.db')
 Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine, autoflush=False)
 session = DBSession()

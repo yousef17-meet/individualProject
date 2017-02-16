@@ -17,6 +17,7 @@ def mainpage():
 	return render_template("mainpage.html", Bands= Bands)
 
 
+
 @app.route('/newuser', methods = ['GET','POST'])
 def signup():
 	if request.method == 'POST':
@@ -93,14 +94,12 @@ def logout():
 @app.route("/song/<int:song_id>/addtoplaylist", methods =['POST'])
 def addtoplaylist(song_id):
 	song = session.query(song).filter_by(id=song_id).one()
-	Playlist = session.query(Playlist).filter_by(user_id=login_session['id']).one()
 	if song not in Playlist.songs:
 		a = SongPlaylistAssociation(song=song)
 		Playlist.song.append(a)
 		session.add_all([a, song, playlist])
 		session.commit()
 		flash("Successfully added to playlist")
-		return redirect(url_for('playlist'))
 	else:
 		flash("This song is already in your playlist")
 		return redirect(url_for('playlist'))
@@ -109,10 +108,7 @@ def addtoplaylist(song_id):
 
 @app.route('/playlist')
 def playlist():
-	if 'id' not in login_session:
-		flash("You must be logged in")
-		return redirect(url_for('login'))
-	playlist = session.query(playlist).filter_by(user_id=login_session['id']).one()
+	playlist = session.query(playlist).filter_by(id=song_id).one()
 	return render_template('playlist.html', playlist=playlist)
 
 

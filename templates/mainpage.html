@@ -4,6 +4,9 @@
 
 <a href = "{{url_for('signup')}}"> Sign Up </a>
 
+<a href = "{{url_for('playlist')}}"> playlist </a>
+
+
 
 
 
@@ -11,7 +14,8 @@
 
 {% for band in Bands %}
 <div class="hi">
-<p>{{band.name}}</p>
+<a href = "{{url_for('ShowBandPage',band_id=band.id)}}"><p>{{band.name}}</p></a>
+
 
 </div>
 {% endfor %}
