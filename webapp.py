@@ -93,7 +93,7 @@ def logout():
 
 @app.route("/song/<int:song_id>/addtoplaylist", methods =['POST'])
 def addtoplaylist(song_id):
-	song = session.query(song).filter_by(id=song_id).one()
+	song = session.query(Song).filter_by(id=song_id).one()
 	if song not in Playlist.songs:
 		a = SongPlaylistAssociation(song=song)
 		Playlist.song.append(a)
@@ -108,7 +108,7 @@ def addtoplaylist(song_id):
 
 @app.route('/playlist')
 def playlist():
-	playlist = session.query(playlist).filter_by(id=song_id).one()
+	playlist = session.query(Playlist).first()
 	return render_template('playlist.html', playlist=playlist)
 
 
